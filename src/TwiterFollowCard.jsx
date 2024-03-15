@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 
-  export function TwitterFollowCard({children, formatUserName,userName =' User not found', avatar,beginIsFollowing}){
+  export function TwitterFollowCard({children,userName =' User not found', avatar,beginIsFollowing}){
  
   const [isFollowing, setIsFollowing] = useState(beginIsFollowing)
   const textoButton = isFollowing ? 'Siguiendo':'Seguir'
@@ -21,7 +21,7 @@ const clasButon = isFollowing ? 'tw-followCard-button.is-following ':'tw-followC
                     alt="el avatar vladimir jajajas" src={avatar}/>
               <div  className='tw-followCard-infoUserName'>
                 {children}
-                <span>{formatUserName(userName)}</span>
+                <span>{userName}</span>
               </div>
             </header>
             <aside>

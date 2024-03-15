@@ -1,34 +1,42 @@
  import './App.css'
 import { TwitterFollowCard } from './TwiterFollowCard'
 import { useState } from 'react'
+
+
+const users = [{
+  userName:'vcebllos',
+  name:'Vladimir Ilich Ceballos Narvaez',
+  isFollowing:true
+},
+
+{
+  userName:'vperez',
+  name:'Vladimir Samael Ceballos Perez',
+  isFollowing:true
+},
+{
+  userName:'mceballos',
+  name:'Mijail Alberto Ceballos Narvaez',
+  isFollowing:true
+}
+]
  
  export function App (){
 
-   const formatUserName =(userName) => `@${userName}`
-   const vladimir = { isFollowing:true,userName:'vceballos'}
-   const [name,setName] = useState('vladimir Ceballos')
-   console.log('render with name ',name)
-    return(
-      <div className='App'>
-         <TwitterFollowCard {...vladimir } formatUserName={formatUserName}   avatar={"https://unavatar.io/duckduckgo/gummibeer.dev"} beginIsFollowing={false}>
-           <strong>vladimir Ilich Ceballos Narvaez Exitos</strong> 
-        </TwitterFollowCard>
-         <TwitterFollowCard formatUserName={formatUserName} userName={name}  avatar={"https://unavatar.io/duckduckgo/gummibeer.dev"} beginIsFollowing={false}>
-          <strong>Mijail Alaberto Ceballos Narvaez </strong>  
-        </TwitterFollowCard>
-         <TwitterFollowCard formatUserName={formatUserName}  userName={name}  avatar={"https://unavatar.io/youtube/casey"} beginIsFollowing>
-          <strong>Vladimir Samael Ceballos Perez</strong> 
-        </TwitterFollowCard>
-        <TwitterFollowCard formatUserName={formatUserName} userName={name}  avatar={"https://unavatar.io/youtube/casey"} beginIsFollowing>
-           {/* REalizado por vladimir Ceballos*/}
-        </TwitterFollowCard>
-
-
-        
-        <button onClick={() => setName('ilich xxxxx')}>
-          Cambio nombre 
-        </button>
-      </div>
-       
-    )
+   
+   return(   
+        <section className='App'>
+          {
+          users.map (user => {
+            const {userName,name,isFollowing} =  user
+            return(
+              <TwitterFollowCard key={userName}userName={userName}name={name}isFollowing={isFollowing}  avatar={"https://unavatar.io/duckduckgo/gummibeer.dev"} >
+                {name}
+              </TwitterFollowCard>
+            )
+          })   
+        }   
+      </section>
+       )
+    
 }
